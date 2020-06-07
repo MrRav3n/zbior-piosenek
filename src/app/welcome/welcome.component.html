@@ -1,0 +1,13 @@
+<div class="welcomeForm row justify-content-center">
+    <div class="col-md-6 col-11">
+      <form [formGroup]="loginForm">
+        <div class="form-group">
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nazwa zespołu"
+                 formControlName="bandName">
+        </div>
+        <button type="submit" class="btn btn-primary col-12" (click)="login()">Zaloguj się!</button>
+      </form>
+    </div>
+</div>
+
+

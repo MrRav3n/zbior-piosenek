@@ -1,0 +1,52 @@
+
+<div class="welcomeForm row justify-content-center">
+  <h1 class="text-center col-12">Dodaj nową playlistę</h1>
+  <div class="col-md-6 col-11">
+    <form [formGroup]="addNewPlaylistForm">
+      <div class="form-group">
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nazwa playlisty"
+               formControlName="playlistName">
+      </div>
+      <button class="btn btn-primary col-12" (click)="addNewPlaylist()">Dodaj!</button>
+    </form>
+  </div>
+</div>
+
+<div class="welcomeForm row justify-content-center">
+  <h1 class="text-center col-12">Dodaj piosenkę do playlisty</h1>
+  <div class="col-md-6 col-11">
+    <form [formGroup]="addSongToPlaylistForm">
+      <div class="form-group">
+        <div class="form-group">
+          <label for="exampleFormControlSelect2">Nazwa playlisty</label>
+          <select class="form-control" id="exampleFormControlSelect2" formControlName="playlistID">
+            <option *ngFor="let playlist of this.main.band.playlist" [value]="playlist._id">{{playlist.name}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Nazwa piosenki do dodania do playlisty</label>
+          <select class="form-control" id="exampleFormControlSelect1" formControlName="songID">
+            <option *ngFor="let song of this.main.songs" [value]="song._id">{{song.name}}</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn btn-primary col-12" (click)="addNewSongToPlaylist()">Dodaj!</button>
+    </form>
+  </div>
+</div>
+
+<div class="welcomeForm row justify-content-center">
+  <h1 class="text-center col-12">Dodaj nową piosenkę</h1>
+  <div class="col-md-6 col-11">
+    <form [formGroup]="addNewSongForm">
+      <div class="form-group">
+        <input type="email" class="form-control"  aria-describedby="emailHelp" placeholder="Nazwa piosenki"
+               formControlName="songName">
+      </div>
+      <div class="form-group">
+        <textarea class="form-control" rows="5" formControlName="textToSend" placeholder="Treść piosenki"></textarea>
+      </div>
+      <button class="btn btn-primary col-12" (click)="addNewSong()">Dodaj!</button>
+    </form>
+  </div>
+</div>

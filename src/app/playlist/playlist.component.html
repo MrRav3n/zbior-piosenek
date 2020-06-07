@@ -1,0 +1,2 @@
+<h1 class="text-center">{{this.main.currentPlaylist.name}}</h1>
+<h3 *ngFor="let song of songs; let i = index" class="choose" (click)="setCurrentSong(song._id, i)">{{song.name}}</h3>
