@@ -15,6 +15,8 @@ import { MainBandComponent } from './main-band/main-band.component';
 import { SingleSongComponent } from './single-song/single-song.component';
 import { HttpErrorInterceptor } from "./interceptor/http-error.interceptor";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -33,11 +35,12 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     HttpClientModule,
     ReactiveFormsModule,
     ToastrModule.forRoot({
-      timeOut: 10000,
-      positionClass: 'toast-bottom-right',
+      timeOut: 3000,
+      positionClass: 'toast-top-right',
       preventDuplicates: true,
     }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     MainService,

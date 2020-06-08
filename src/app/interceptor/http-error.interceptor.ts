@@ -12,10 +12,11 @@ import { ToastrService } from 'ngx-toastr';
 export const InterceptorSkipHeader = 'X-Skip-Interceptor';
 
 export class HttpErrorInterceptor implements HttpInterceptor {
+
   constructor(
     private toastr: ToastrService,
-  ) {
-  }
+  ) {}
+
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (request.headers.has(InterceptorSkipHeader)) {
       const headers = request.headers.delete(InterceptorSkipHeader);

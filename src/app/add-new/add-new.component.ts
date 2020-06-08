@@ -8,11 +8,12 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
   styleUrls: ['./add-new.component.scss']
 })
 export class AddNewComponent implements OnInit {
+
   addNewPlaylistForm: FormGroup;
   addSongToPlaylistForm: FormGroup;
   addNewSongForm: FormGroup;
-  songsOptions
   songs = [];
+
   constructor(
     public main: MainService
   ) {
@@ -36,12 +37,14 @@ export class AddNewComponent implements OnInit {
       });
     })
   }
+
   addNewPlaylist() {
     if (this.addNewPlaylistForm.valid) {
       this.addNewPlaylistForm.setControl('bandID', new FormControl(this.main.band._id))
       this.main.addNewPlaylist(this.addNewPlaylistForm.value);
     }
   }
+
   addNewSongToPlaylist() {
     if (this.addSongToPlaylistForm.valid) {
       this.addSongToPlaylistForm.setControl('bandID', new FormControl(this.main.band._id))

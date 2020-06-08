@@ -14,12 +14,12 @@ export class AllSongsComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   setCurrentSong(id) {
     this.main.currentSong = this.main.songs.filter(v => v._id === id)[0];
     this.main.currentSong.textToSend.replace(/↵/g, '<br/>');
     this.router.navigateByUrl('band/current-song');
   }
+
 }

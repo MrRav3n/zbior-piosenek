@@ -8,18 +8,18 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
   styleUrls: ['./welcome.component.scss']
 })
 export class WelcomeComponent implements OnInit {
+
   loginForm: FormGroup;
+
   constructor(
     private main: MainService
   ) {
     this.loginForm = new FormGroup({
-      bandName: new FormControl('zespół420', Validators.required)
+      bandName: new FormControl('', Validators.required)
     })
   }
 
-  ngOnInit() {
-    this.login();
-  }
+  ngOnInit() {}
 
   login() {
     if (this.loginForm.valid) {

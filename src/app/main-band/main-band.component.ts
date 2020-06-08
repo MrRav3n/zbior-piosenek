@@ -14,10 +14,11 @@ export class MainBandComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
+
   setCurrentPlaylist(id) {
     this.main.currentPlaylist = this.main.band.playlist.filter(v => v._id === id)[0];
     this.router.navigateByUrl('band/current-playlist');
   }
+
 }

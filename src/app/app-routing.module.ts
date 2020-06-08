@@ -18,10 +18,8 @@ const routes: Routes = [
       {path: 'add-new', component: AddNewComponent},
       {path: 'current-playlist', component: PlaylistComponent},
       {path: 'current-song', component: SingleSongComponent},
-    ]},
-
-
-  ];
+  ]},
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

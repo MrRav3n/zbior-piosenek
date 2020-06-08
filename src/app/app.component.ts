@@ -18,7 +18,6 @@ export class AppComponent {
     if (this.main.band) {
       this.router.navigateByUrl('all-songs');
     } else {
-      console.log('navigating');
       this.router.navigateByUrl('');
     }
   }

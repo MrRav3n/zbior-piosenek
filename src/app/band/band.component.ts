@@ -12,7 +12,6 @@ export class BandComponent implements OnInit {
     public main: MainService
   ) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }
