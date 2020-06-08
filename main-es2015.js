@@ -972,8 +972,8 @@ class WelcomeComponent {
         });
     }
     ngOnInit() {
-        this.loginForm.controls.bandName.patchValue('test');
-        this.login();
+        // this.loginForm.controls.bandName.patchValue('test');
+        // this.login();
     }
     login() {
         if (this.loginForm.valid) {

@@ -1990,9 +1990,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       _createClass(WelcomeComponent, [{
         key: "ngOnInit",
-        value: function ngOnInit() {
-          this.loginForm.controls.bandName.patchValue('test');
-          this.login();
+        value: function ngOnInit() {// this.loginForm.controls.bandName.patchValue('test');
+          // this.login();
         }
       }, {
         key: "login",
