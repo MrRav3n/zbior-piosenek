@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1591633936682,
+  "timestamp": 1591641902297,
   "index": "https://mrrav3n.github.io/zbior-piosenek/index.html",
   "assetGroups": [
     {
@@ -40,25 +40,14 @@
   ],
   "dataGroups": [
     {
-      "name": "api-performance",
+      "name": "mission-api",
       "patterns": [
-        "\\/assets\\/i18n\\/.*",
-        "\\/api\\/.*"
-      ],
-      "strategy": "performance",
-      "maxSize": 100,
-      "maxAge": 259200000,
-      "version": 1
-    },
-    {
-      "name": "api-freshness",
-      "patterns": [
-        "\\/api\\/band\\/allBand"
+        "\\/api\\/"
       ],
       "strategy": "freshness",
-      "maxSize": 100,
-      "maxAge": 259200000,
-      "timeoutMs": 10000,
+      "maxSize": 1,
+      "maxAge": 86313600000,
+      "timeoutMs": 15000,
       "version": 1
     }
   ],
