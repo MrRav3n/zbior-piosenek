@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1591630080027,
+  "timestamp": 1591633689932,
   "index": "https://mrrav3n.github.io/zbior-piosenek/index.html",
   "assetGroups": [
     {
@@ -10,8 +10,8 @@
       "urls": [
         "https://mrrav3n.github.io/zbior-piosenek/favicon.ico",
         "https://mrrav3n.github.io/zbior-piosenek/index.html",
-        "https://mrrav3n.github.io/zbior-piosenek/main-es2015.daae28fe8385b82a13a2.js",
-        "https://mrrav3n.github.io/zbior-piosenek/main-es5.daae28fe8385b82a13a2.js",
+        "https://mrrav3n.github.io/zbior-piosenek/main-es2015.2b3dd368f2b7c3f2adc6.js",
+        "https://mrrav3n.github.io/zbior-piosenek/main-es5.2b3dd368f2b7c3f2adc6.js",
         "https://mrrav3n.github.io/zbior-piosenek/manifest.webmanifest",
         "https://mrrav3n.github.io/zbior-piosenek/polyfills-es2015.f2c5ab749249a66bdf26.js",
         "https://mrrav3n.github.io/zbior-piosenek/polyfills-es5.049f620af8c864cf4d88.js",
@@ -38,7 +38,30 @@
       "patterns": []
     }
   ],
-  "dataGroups": [],
+  "dataGroups": [
+    {
+      "name": "api-performance",
+      "patterns": [
+        "\\/assets\\/i18n\\/.*",
+        "\\/api\\/.*"
+      ],
+      "strategy": "performance",
+      "maxSize": 100,
+      "maxAge": 259200000,
+      "version": 1
+    },
+    {
+      "name": "api-freshness",
+      "patterns": [
+        "\\/api\\/band\\/allBand"
+      ],
+      "strategy": "freshness",
+      "maxSize": 100,
+      "maxAge": 259200000,
+      "timeoutMs": 10000,
+      "version": 1
+    }
+  ],
   "hashTable": {
     "https://mrrav3n.github.io/zbior-piosenek/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
     "https://mrrav3n.github.io/zbior-piosenek/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
@@ -49,9 +72,9 @@
     "https://mrrav3n.github.io/zbior-piosenek/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "https://mrrav3n.github.io/zbior-piosenek/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "https://mrrav3n.github.io/zbior-piosenek/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "https://mrrav3n.github.io/zbior-piosenek/index.html": "1446e70f0eaad6c66381ade693ab899909b97b33",
-    "https://mrrav3n.github.io/zbior-piosenek/main-es2015.daae28fe8385b82a13a2.js": "04dfbd77026bb358108c8de0031128795c64ebd8",
-    "https://mrrav3n.github.io/zbior-piosenek/main-es5.daae28fe8385b82a13a2.js": "3ec708176a3d0c4b2064005adaf208ebf0c5e1c0",
+    "https://mrrav3n.github.io/zbior-piosenek/index.html": "62135d8b49e98bd183d57e96215f94e928fdd2f9",
+    "https://mrrav3n.github.io/zbior-piosenek/main-es2015.2b3dd368f2b7c3f2adc6.js": "00d0e14da1a94c099ad10855cc8b86f53a640f46",
+    "https://mrrav3n.github.io/zbior-piosenek/main-es5.2b3dd368f2b7c3f2adc6.js": "6e13fe8106e119f0f6af33b5461d91f6c4cc7706",
     "https://mrrav3n.github.io/zbior-piosenek/manifest.webmanifest": "f504be1bf7e81b54f02c9b37f968cf779cc2bb34",
     "https://mrrav3n.github.io/zbior-piosenek/polyfills-es2015.f2c5ab749249a66bdf26.js": "72ad4ccc0a3916ae4598199447cdeadd6d380570",
     "https://mrrav3n.github.io/zbior-piosenek/polyfills-es5.049f620af8c864cf4d88.js": "8aa26ea87b9958c6bd13b7c257c0e9940438e684",
