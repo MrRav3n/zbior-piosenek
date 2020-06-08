@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MainService } from "../services/main.service";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: 'app-add-new',
@@ -15,14 +16,16 @@ export class AddNewComponent implements OnInit {
   songs = [];
 
   constructor(
-    public main: MainService
+    public main: MainService,
+    private toastr: ToastrService
   ) {
     this.addNewPlaylistForm = new FormGroup({
       playlistName: new FormControl('', Validators.required)
     })
     this.addSongToPlaylistForm = new FormGroup({
       songID: new FormControl('', Validators.required),
-      playlistID: new FormControl('', Validators.required)
+      playlistID: new FormControl('', Validators.required),
+      bandID: new FormControl('', Validators.required)
     })
     this.addNewSongForm = new FormGroup({
       songName: new FormControl('', Validators.required),
@@ -30,12 +33,11 @@ export class AddNewComponent implements OnInit {
     })
   }
 
-  ngOnInit() {
-    this.addSongToPlaylistForm.get('playlistID').valueChanges.subscribe(v => {
-      this.songs = this.main.songs.filter((item) => {
-        return !this.main.band.playlist[this.addSongToPlaylistForm.get('playlistID').value.split('$')[1]].songs.includes(item._id);
-      });
-    })
+  ngOnInit() {}
+  onEditClick(val: any) {
+    this.songs = this.main.songs.filter((item) => {
+      return !this.main.band.playlist[val.split('$')[1]].songs.includes(item._id);
+    });
   }
 
   addNewPlaylist() {
@@ -46,10 +48,24 @@ export class AddNewComponent implements OnInit {
   }
 
   addNewSongToPlaylist() {
+    this.addSongToPlaylistForm.controls.playlistID.setValue(this.addSongToPlaylistForm.get('playlistID').value.split('$')[0]);
+    this.addSongToPlaylistForm.controls.bandID.setValue(this.main.band._id);
     if (this.addSongToPlaylistForm.valid) {
-      this.addSongToPlaylistForm.setControl('bandID', new FormControl(this.main.band._id))
-      this.addSongToPlaylistForm.setControl('playlistID', new FormControl(this.addSongToPlaylistForm.get('playlistID').value.split('$')[0]))
-      this.main.addNewSongToPlaylist(this.addSongToPlaylistForm.value);
+      this.main.addNewSongToPlaylist(this.addSongToPlaylistForm.value).subscribe(res => {
+        this.toastr.success('Dodano nową piosenkę do playlisty.', 'Udało się!')
+        this.main.refreshValues().subscribe(res => {
+          this.songs = [];
+          this.addSongToPlaylistForm.reset();
+          if(this.main.band.playlist.length === 1) {
+            this.addSongToPlaylistForm.controls.playlistID.setValue(this.main.band.playlist[0]._id);
+            this.songs = this.main.songs.filter((item) => {
+              return !this.main.band.playlist[0].songs.includes(item._id);
+            });
+            this.addSongToPlaylistForm.controls.songID.setValue(this.songs[0]._id);
+          }
+          console.log(this.addSongToPlaylistForm.value)
+        });
+      });
     }
   }
   addNewSong() {

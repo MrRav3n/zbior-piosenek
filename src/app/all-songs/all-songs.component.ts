@@ -14,7 +14,9 @@ export class AllSongsComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.main.currentPlaylist = undefined;
+  }
 
   setCurrentSong(id) {
     this.main.currentSong = this.main.songs.filter(v => v._id === id)[0];

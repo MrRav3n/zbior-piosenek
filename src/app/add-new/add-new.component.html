@@ -19,7 +19,7 @@
       <div class="form-group">
         <div class="form-group">
           <label for="exampleFormControlSelect2">Nazwa playlisty</label>
-          <select class="form-control" id="exampleFormControlSelect2" formControlName="playlistID">
+          <select class="form-control" id="exampleFormControlSelect2" formControlName="playlistID" (change)="onEditClick($event.target.value)">
             <option *ngFor="let playlist of this.main.band.playlist, let i=index" [value]="playlist._id+'$'+i">{{playlist.name}}</option>
           </select>
         </div>

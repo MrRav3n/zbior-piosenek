@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
+import { Observable } from "rxjs";
+import { map } from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -31,11 +33,12 @@ export class MainService {
     })
   }
 
-  refreshValues() {
-    this.http.get<any>(`${this.api}band/allBand?bandName=${this.bandName}`).subscribe(res => {
-      this.band = res.band;
-      this.songs = res.songs;
-    })
+  refreshValues(): Observable<any> {
+    return this.http.get<any>(`${this.api}band/allBand?bandName=${this.bandName}`).pipe(
+      map(res => {
+        this.band = res.band;
+        this.songs = res.songs;
+      }))
   }
 
   setCurrentSong(songID) {
@@ -45,21 +48,18 @@ export class MainService {
   addNewPlaylist(playlist) {
     this.http.post(this.api + 'band/add/playlist', playlist).subscribe(res => {
       this.toastr.success('Dodano nową playlistę.', 'Udało się!')
-      this.refreshValues();
+      this.refreshValues().subscribe(res => {});
     })
   }
 
-  addNewSongToPlaylist(songToPlaylist) {
-    this.http.post(this.api + 'band/add/songToPlaylist', songToPlaylist).subscribe(res => {
-      this.toastr.success('Dodano nową piosenkę do playlisty.', 'Udało się!')
-      this.refreshValues();
-    })
+  addNewSongToPlaylist(songToPlaylist): Observable<any> {
+    return this.http.post(this.api + 'band/add/songToPlaylist', songToPlaylist)
   }
 
   addNewSong(song) {
     this.http.post(this.api + 'band/add/song', song).subscribe(res => {
       this.toastr.success('Dodano nową piosenkę.', 'Udało się!')
-      this.refreshValues();
+      this.refreshValues().subscribe(res => {});
     })
   }
 
