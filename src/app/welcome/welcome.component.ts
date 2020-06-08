@@ -13,11 +13,12 @@ export class WelcomeComponent implements OnInit {
     private main: MainService
   ) {
     this.loginForm = new FormGroup({
-      bandName: new FormControl('', Validators.required)
+      bandName: new FormControl('zespół420', Validators.required)
     })
   }
 
   ngOnInit() {
+    this.login();
   }
 
   login() {

@@ -11,6 +11,8 @@ export class AddNewComponent implements OnInit {
   addNewPlaylistForm: FormGroup;
   addSongToPlaylistForm: FormGroup;
   addNewSongForm: FormGroup;
+  songsOptions
+  songs = [];
   constructor(
     public main: MainService
   ) {
@@ -28,17 +30,30 @@ export class AddNewComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.addSongToPlaylistForm.get('playlistID').valueChanges.subscribe(v => {
+      this.songs = this.main.songs.filter((item) => {
+        return !this.main.band.playlist[this.addSongToPlaylistForm.get('playlistID').value.split('$')[1]].songs.includes(item._id);
+      });
+    })
   }
   addNewPlaylist() {
-    this.addNewPlaylistForm.setControl('bandID', new FormControl(this.main.band._id))
-    this.main.addNewPlaylist(this.addNewPlaylistForm.value);
+    if (this.addNewPlaylistForm.valid) {
+      this.addNewPlaylistForm.setControl('bandID', new FormControl(this.main.band._id))
+      this.main.addNewPlaylist(this.addNewPlaylistForm.value);
+    }
   }
   addNewSongToPlaylist() {
-    this.addSongToPlaylistForm.setControl('bandID', new FormControl(this.main.band._id))
-    this.main.addNewSongToPlaylist(this.addSongToPlaylistForm.value);
+    if (this.addSongToPlaylistForm.valid) {
+      this.addSongToPlaylistForm.setControl('bandID', new FormControl(this.main.band._id))
+      this.addSongToPlaylistForm.setControl('playlistID', new FormControl(this.addSongToPlaylistForm.get('playlistID').value.split('$')[0]))
+      this.main.addNewSongToPlaylist(this.addSongToPlaylistForm.value);
+    }
   }
   addNewSong() {
-    this.addNewSongForm.setControl('bandID', new FormControl(this.main.band._id))
-    this.main.addNewSong(this.addNewSongForm.value);
+    if (this.addNewSongForm.valid) {
+      this.addNewSongForm.setControl('bandID', new FormControl(this.main.band._id))
+      this.main.addNewSong(this.addNewSongForm.value);
+    }
   }
+
 }

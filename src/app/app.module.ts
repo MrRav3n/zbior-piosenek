@@ -14,6 +14,7 @@ import { BandComponent } from './band/band.component';
 import { MainBandComponent } from './main-band/main-band.component';
 import { SingleSongComponent } from './single-song/single-song.component';
 import { HttpErrorInterceptor } from "./interceptor/http-error.interceptor";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,13 @@ import { HttpErrorInterceptor } from "./interceptor/http-error.interceptor";
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    }),
+    BrowserAnimationsModule
   ],
   providers: [
     MainService,

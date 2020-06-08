@@ -9,7 +9,6 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
-
 export const InterceptorSkipHeader = 'X-Skip-Interceptor';
 
 export class HttpErrorInterceptor implements HttpInterceptor {
@@ -31,9 +30,8 @@ export class HttpErrorInterceptor implements HttpInterceptor {
           let errorMessage = '';
 
           if (error.error) {
-            errorTitle = 'Wystąpił błąd!'
-            console.log(error.error);
-            errorMessage = error.error.error;
+            errorTitle = 'Wystąpił błąd!';
+            errorMessage =  error.error.error;
             this.toastr.error(errorMessage, errorTitle);
           } else {
             errorTitle = `Kod błędu: ${error.status}`;
