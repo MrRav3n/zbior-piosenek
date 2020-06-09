@@ -1640,7 +1640,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.http = http;
         this.router = router;
         this.toastr = toastr;
-        this.api = 'https://zbior-piosenek-api.glitch.me/api/';
+        this.api = 'https://zbior-piosenek-api.herokuapp.com/api/';
       }
 
       _createClass(MainService, [{

@@ -806,7 +806,7 @@ class MainService {
         this.http = http;
         this.router = router;
         this.toastr = toastr;
-        this.api = 'https://zbior-piosenek-api.glitch.me/api/';
+        this.api = 'https://zbior-piosenek-api.herokuapp.com/api/';
     }
     login(bandName) {
         this.http.get(`${this.api}band/allBand?bandName=${bandName}`).subscribe(res => {
