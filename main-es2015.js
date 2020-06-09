@@ -103,16 +103,7 @@ class AddNewComponent {
             this.main.addNewSongToPlaylist(this.addSongToPlaylistForm.value).subscribe(res => {
                 this.toastr.success('Dodano nową piosenkę do playlisty.', 'Udało się!');
                 this.main.refreshValues().subscribe(res => {
-                    this.songs = [];
-                    this.addSongToPlaylistForm.reset();
-                    if (this.main.band.playlist.length === 1) {
-                        this.addSongToPlaylistForm.controls.playlistID.setValue(this.main.band.playlist[0]._id);
-                        this.songs = this.main.songs.filter((item) => {
-                            return !this.main.band.playlist[0].songs.includes(item._id);
-                        });
-                        this.addSongToPlaylistForm.controls.songID.setValue(this.songs[0]._id);
-                    }
-                    console.log(this.addSongToPlaylistForm.value);
+                    this.main.refresh();
                 });
             });
         }
@@ -745,9 +736,16 @@ class PlaylistComponent {
         this.songs = [];
     }
     ngOnInit() {
-        this.songs = this.main.songs.filter((item) => {
-            return this.main.currentPlaylist.songs.includes(item._id);
+        this.main.currentPlaylist.songs.map(v => {
+            const song = this.main.songs.filter((item) => {
+                return item._id === v;
+            })[0];
+            console.log(song);
+            this.songs.push(song);
         });
+        // this.songs = this.main.songs.filter((item) => {
+        //   return this.main.currentPlaylist.songs.includes(item._id);
+        // });
     }
     setCurrentSong(id, i) {
         this.main.currentSong = this.main.songs.filter(v => v._id === id)[0];
@@ -795,6 +793,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/http.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
 /* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/__ivy_ngcc__/fesm2015/ngx-toastr.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+
 
 
 
@@ -802,10 +802,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 class MainService {
-    constructor(http, router, toastr) {
+    constructor(http, router, toastr, location) {
         this.http = http;
         this.router = router;
         this.toastr = toastr;
+        this.location = location;
         this.api = 'https://zbior-piosenek-api.herokuapp.com/api/';
     }
     login(bandName) {
@@ -841,15 +842,20 @@ class MainService {
             this.refreshValues().subscribe(res => { });
         });
     }
+    refresh() {
+        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+            this.router.navigate([this.location.path()]);
+        });
+    }
 }
-MainService.ɵfac = function MainService_Factory(t) { return new (t || MainService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](ngx_toastr__WEBPACK_IMPORTED_MODULE_4__["ToastrService"])); };
+MainService.ɵfac = function MainService_Factory(t) { return new (t || MainService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](ngx_toastr__WEBPACK_IMPORTED_MODULE_4__["ToastrService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common__WEBPACK_IMPORTED_MODULE_5__["Location"])); };
 MainService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: MainService, factory: MainService.ɵfac, providedIn: 'root' });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MainService, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
         args: [{
                 providedIn: 'root'
             }]
-    }], function () { return [{ type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }, { type: ngx_toastr__WEBPACK_IMPORTED_MODULE_4__["ToastrService"] }]; }, null); })();
+    }], function () { return [{ type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }, { type: ngx_toastr__WEBPACK_IMPORTED_MODULE_4__["ToastrService"] }, { type: _angular_common__WEBPACK_IMPORTED_MODULE_5__["Location"] }]; }, null); })();
 
 
 /***/ }),
@@ -903,12 +909,11 @@ class SingleSongComponent {
         const iterator = this.main.currentSong.iterator + 1;
         const id = this.main.currentPlaylist.songs[iterator];
         console.log(id);
+        console.log(this.main.currentSong._id);
         console.log(this.main.currentSong.iterator);
-        console.log(this.main.currentSong);
         if (id) {
             this.main.currentSong = this.main.songs.filter(v => v._id === id)[0];
             this.main.currentSong.iterator = iterator;
-            console.log(this.main.currentSong);
         }
         else {
             this.toastr.error('Koniec playlisty!');
@@ -972,8 +977,8 @@ class WelcomeComponent {
         });
     }
     ngOnInit() {
-        // this.loginForm.controls.bandName.patchValue('test');
-        // this.login();
+        this.loginForm.controls.bandName.patchValue('test');
+        this.login();
     }
     login() {
         if (this.loginForm.valid) {

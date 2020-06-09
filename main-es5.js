@@ -180,21 +180,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               _this2.toastr.success('Dodano nową piosenkę do playlisty.', 'Udało się!');
 
               _this2.main.refreshValues().subscribe(function (res) {
-                _this2.songs = [];
-
-                _this2.addSongToPlaylistForm.reset();
-
-                if (_this2.main.band.playlist.length === 1) {
-                  _this2.addSongToPlaylistForm.controls.playlistID.setValue(_this2.main.band.playlist[0]._id);
-
-                  _this2.songs = _this2.main.songs.filter(function (item) {
-                    return !_this2.main.band.playlist[0].songs.includes(item._id);
-                  });
-
-                  _this2.addSongToPlaylistForm.controls.songID.setValue(_this2.songs[0]._id);
-                }
-
-                console.log(_this2.addSongToPlaylistForm.value);
+                _this2.main.refresh();
               });
             });
           }
@@ -1508,9 +1494,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function ngOnInit() {
           var _this4 = this;
 
-          this.songs = this.main.songs.filter(function (item) {
-            return _this4.main.currentPlaylist.songs.includes(item._id);
-          });
+          this.main.currentPlaylist.songs.map(function (v) {
+            var song = _this4.main.songs.filter(function (item) {
+              return item._id === v;
+            })[0];
+
+            console.log(song);
+
+            _this4.songs.push(song);
+          }); // this.songs = this.main.songs.filter((item) => {
+          //   return this.main.currentPlaylist.songs.includes(item._id);
+          // });
         }
       }, {
         key: "setCurrentSong",
@@ -1632,14 +1626,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var ngx_toastr__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! ngx-toastr */
     "./node_modules/ngx-toastr/__ivy_ngcc__/fesm2015/ngx-toastr.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
 
     var MainService = /*#__PURE__*/function () {
-      function MainService(http, router, toastr) {
+      function MainService(http, router, toastr, location) {
         _classCallCheck(this, MainService);
 
         this.http = http;
         this.router = router;
         this.toastr = toastr;
+        this.location = location;
         this.api = 'https://zbior-piosenek-api.herokuapp.com/api/';
       }
 
@@ -1701,13 +1702,24 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             _this8.refreshValues().subscribe(function (res) {});
           });
         }
+      }, {
+        key: "refresh",
+        value: function refresh() {
+          var _this9 = this;
+
+          this.router.navigateByUrl('/', {
+            skipLocationChange: true
+          }).then(function () {
+            _this9.router.navigate([_this9.location.path()]);
+          });
+        }
       }]);
 
       return MainService;
     }();
 
     MainService.ɵfac = function MainService_Factory(t) {
-      return new (t || MainService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](ngx_toastr__WEBPACK_IMPORTED_MODULE_4__["ToastrService"]));
+      return new (t || MainService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](ngx_toastr__WEBPACK_IMPORTED_MODULE_4__["ToastrService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common__WEBPACK_IMPORTED_MODULE_5__["Location"]));
     };
 
     MainService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
@@ -1730,6 +1742,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]
         }, {
           type: ngx_toastr__WEBPACK_IMPORTED_MODULE_4__["ToastrService"]
+        }, {
+          type: _angular_common__WEBPACK_IMPORTED_MODULE_5__["Location"]
         }];
       }, null);
     })();
@@ -1850,15 +1864,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var iterator = this.main.currentSong.iterator + 1;
           var id = this.main.currentPlaylist.songs[iterator];
           console.log(id);
+          console.log(this.main.currentSong._id);
           console.log(this.main.currentSong.iterator);
-          console.log(this.main.currentSong);
 
           if (id) {
             this.main.currentSong = this.main.songs.filter(function (v) {
               return v._id === id;
             })[0];
             this.main.currentSong.iterator = iterator;
-            console.log(this.main.currentSong);
           } else {
             this.toastr.error('Koniec playlisty!');
           }
@@ -1990,8 +2003,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       _createClass(WelcomeComponent, [{
         key: "ngOnInit",
-        value: function ngOnInit() {// this.loginForm.controls.bandName.patchValue('test');
-          // this.login();
+        value: function ngOnInit() {
+          this.loginForm.controls.bandName.patchValue('test');
+          this.login();
         }
       }, {
         key: "login",
