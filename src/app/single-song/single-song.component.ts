@@ -26,13 +26,11 @@ export class SingleSongComponent implements OnInit {
     const iterator = this.main.currentSong.iterator + 1;
     const id = this.main.currentPlaylist.songs[iterator];
     console.log(id);
+    console.log(this.main.currentSong._id);
     console.log( this.main.currentSong.iterator);
-    console.log(this.main.currentSong);
     if (id) {
-
       this.main.currentSong = this.main.songs.filter(v => v._id === id)[0];
       this.main.currentSong.iterator = iterator;
-      console.log(this.main.currentSong);
     } else {
       this.toastr.error('Koniec playlisty!')
     }

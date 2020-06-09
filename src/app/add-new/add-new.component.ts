@@ -54,16 +54,7 @@ export class AddNewComponent implements OnInit {
       this.main.addNewSongToPlaylist(this.addSongToPlaylistForm.value).subscribe(res => {
         this.toastr.success('Dodano nową piosenkę do playlisty.', 'Udało się!')
         this.main.refreshValues().subscribe(res => {
-          this.songs = [];
-          this.addSongToPlaylistForm.reset();
-          if(this.main.band.playlist.length === 1) {
-            this.addSongToPlaylistForm.controls.playlistID.setValue(this.main.band.playlist[0]._id);
-            this.songs = this.main.songs.filter((item) => {
-              return !this.main.band.playlist[0].songs.includes(item._id);
-            });
-            this.addSongToPlaylistForm.controls.songID.setValue(this.songs[0]._id);
-          }
-          console.log(this.addSongToPlaylistForm.value)
+          this.main.refresh();
         });
       });
     }

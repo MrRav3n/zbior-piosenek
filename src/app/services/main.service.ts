@@ -4,7 +4,7 @@ import { Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
-
+import { Location } from '@angular/common';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,12 +15,13 @@ export class MainService {
   currentSong;
   currentPlaylist;
   bandName;
-  api = 'https://zbior-piosenek-api.glitch.me/api/';
+  api = 'https://zbior-piosenek-api.herokuapp.com/api/';
 
   constructor(
     private http: HttpClient,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private location: Location,
   ) { }
 
   login(bandName) {
@@ -63,4 +64,9 @@ export class MainService {
     })
   }
 
+  refresh() {
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+      this.router.navigate([this.location.path()]);
+    });
+  }
 }

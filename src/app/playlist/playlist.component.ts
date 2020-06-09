@@ -17,9 +17,16 @@ export class PlaylistComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.songs = this.main.songs.filter((item) => {
-      return this.main.currentPlaylist.songs.includes(item._id);
-    });
+    this.main.currentPlaylist.songs.map(v => {
+      const song = this.main.songs.filter((item) => {
+        return item._id === v;
+      })[0];
+      console.log(song);
+      this.songs.push(song);
+    })
+    // this.songs = this.main.songs.filter((item) => {
+    //   return this.main.currentPlaylist.songs.includes(item._id);
+    // });
   }
 
   setCurrentSong(id, i) {
