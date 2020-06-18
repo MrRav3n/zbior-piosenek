@@ -23,5 +23,8 @@ export class AllSongsComponent implements OnInit {
     this.main.currentSong.textToSend.replace(/↵/g, '<br/>');
     this.router.navigateByUrl('band/current-song');
   }
+  delete(id) {
+    this.main.delete(id);
+  }
 
 }

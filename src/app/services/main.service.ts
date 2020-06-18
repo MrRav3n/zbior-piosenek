@@ -69,4 +69,10 @@ export class MainService {
       this.router.navigate([this.location.path()]);
     });
   }
+  delete(id) {
+    this.http.post(this.api + 'band/delete/song', {songID: id}).subscribe(res => {
+      this.toastr.success('usunięto piosenkę', 'Udało się!')
+      this.refreshValues().subscribe(res => {});
+    })
+  }
 }

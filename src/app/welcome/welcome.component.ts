@@ -20,8 +20,8 @@ export class WelcomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.loginForm.controls.bandName.patchValue('test');
-    // this.login();
+    this.loginForm.controls.bandName.patchValue('test');
+    this.login();
   }
 
   login() {

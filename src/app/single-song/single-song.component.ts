@@ -22,17 +22,27 @@ export class SingleSongComponent implements OnInit {
     this.router.navigateByUrl('band/current-playlist');
   }
 
-  nextSong() {
-    const iterator = this.main.currentSong.iterator + 1;
+  nextSong(iter?) {
+    let iterator;
+    if(!iter) {
+      iterator = this.main.currentSong.iterator + 1;
+    } else {
+      iterator = iter+1;
+    }
     const id = this.main.currentPlaylist.songs[iterator];
-    console.log(id);
-    console.log(this.main.currentSong._id);
-    console.log( this.main.currentSong.iterator);
     if (id) {
-      this.main.currentSong = this.main.songs.filter(v => v._id === id)[0];
-      this.main.currentSong.iterator = iterator;
+      this.main.currentSong = this.main.songs.filter(v => {
+        console.log(v._id === id);
+        return v._id === id;
+      })[0];
+      if(!this.main.currentSong) {
+        this.nextSong(iterator);
+      } else {
+        this.main.currentSong.iterator = iterator;
+      }
     } else {
       this.toastr.error('Koniec playlisty!')
+      return;
     }
   }
 

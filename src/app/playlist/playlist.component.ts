@@ -21,8 +21,9 @@ export class PlaylistComponent implements OnInit {
       const song = this.main.songs.filter((item) => {
         return item._id === v;
       })[0];
-      console.log(song);
-      this.songs.push(song);
+     if(song != null) {
+       this.songs.push(song);
+     }
     })
     // this.songs = this.main.songs.filter((item) => {
     //   return this.main.currentPlaylist.songs.includes(item._id);

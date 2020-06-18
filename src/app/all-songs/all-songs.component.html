@@ -1,2 +1,2 @@
 <h1 class="text-center bb mt-2">Wszystkie piosenki</h1>
-<h3 *ngFor="let song of this.main.songs" class="choose" (click)="setCurrentSong(song._id)">{{song.name}}</h3>
+<div *ngFor="let song of this.main.songs" class="choose row justify-content-around" ><div class="col-10" (click)="setCurrentSong(song._id)">{{song.name}}</div> <div class="delete col-2" (click)="delete(song._id)">Usuń</div> </div>
