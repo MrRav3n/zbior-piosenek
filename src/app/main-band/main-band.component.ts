@@ -20,5 +20,9 @@ export class MainBandComponent implements OnInit {
     this.main.currentPlaylist = this.main.band.playlist.filter(v => v._id === id)[0];
     this.router.navigateByUrl('band/current-playlist');
   }
-
+  delete(id) {
+    if(window.confirm('Usunąć tą playlistę?')) {
+      this.main.deletePlaylist(id);
+    }
+  }
 }

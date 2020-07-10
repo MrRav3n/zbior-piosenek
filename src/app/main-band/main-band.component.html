@@ -1,5 +1,8 @@
 <h1 class="text-center mt-2 mb-3 bb">{{this.main.band.name}}</h1>
 
 <h1 class="text-center">Twoje playlisty</h1>
+<h3 *ngFor="let playlist of main.band.playlist" class="choose row justify-content-around">
+  <div class="col-10" (click)="setCurrentPlaylist(playlist._id)">{{playlist.name}}</div>
+  <div class="delete col-2" (click)="delete(playlist._id)">Usuń</div>
+</h3>
 
-<h3 *ngFor="let playlist of main.band.playlist" class="choose" (click)="setCurrentPlaylist(playlist._id)">{{playlist.name}}</h3>

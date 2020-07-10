@@ -15,8 +15,8 @@ export class MainService {
   currentSong;
   currentPlaylist;
   bandName;
-  api = 'https://zbior-piosenek-api.herokuapp.com/api/';
-
+  apiHeroku = 'https://zbior-piosenek-api.herokuapp.com/api/';
+  api = 'http://localhost:8081/api/';
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -72,6 +72,12 @@ export class MainService {
   delete(id) {
     this.http.post(this.api + 'band/delete/song', {songID: id}).subscribe(res => {
       this.toastr.success('usunięto piosenkę', 'Udało się!')
+      this.refreshValues().subscribe(res => {});
+    })
+  }
+  deletePlaylist(id) {
+    this.http.post(this.api + 'band/delete/playlist', {bandID: this.band._id, playlistID: id}).subscribe(res => {
+      this.toastr.success('usunięto playlistę', 'Udało się!')
       this.refreshValues().subscribe(res => {});
     })
   }
