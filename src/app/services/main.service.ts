@@ -15,8 +15,8 @@ export class MainService {
   currentSong;
   currentPlaylist;
   bandName;
-  apiHeroku = 'https://zbior-piosenek-api.herokuapp.com/api/';
-  api = 'http://localhost:8081/api/';
+  api = 'https://zbior-piosenek-api.herokuapp.com/api/';
+  apiLocalhost = 'http://localhost:8081/api/';
   constructor(
     private http: HttpClient,
     private router: Router,
