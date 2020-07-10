@@ -1320,7 +1320,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "h3", 3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function MainBandComponent_h3_4_Template_h3_click_0_listener() {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 4);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function MainBandComponent_h3_4_Template_div_click_1_listener() {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r3);
 
           var playlist_r1 = ctx.$implicit;
@@ -1330,7 +1332,25 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return ctx_r2.setCurrentPlaylist(playlist_r1._id);
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 5);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function MainBandComponent_h3_4_Template_div_click_3_listener() {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r3);
+
+          var playlist_r1 = ctx.$implicit;
+
+          var ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+          return ctx_r4["delete"](playlist_r1._id);
+        });
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, "Usu\u0144");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
       }
@@ -1338,7 +1358,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       if (rf & 2) {
         var playlist_r1 = ctx.$implicit;
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](playlist_r1.name);
       }
@@ -1363,6 +1383,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           })[0];
           this.router.navigateByUrl('band/current-playlist');
         }
+      }, {
+        key: "delete",
+        value: function _delete(id) {
+          if (window.confirm('Usunąć tą playlistę?')) {
+            this.main.deletePlaylist(id);
+          }
+        }
       }]);
 
       return MainBandComponent;
@@ -1377,7 +1404,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       selectors: [["app-main-band"]],
       decls: 5,
       vars: 2,
-      consts: [[1, "text-center", "mt-2", "mb-3", "bb"], [1, "text-center"], ["class", "choose", 3, "click", 4, "ngFor", "ngForOf"], [1, "choose", 3, "click"]],
+      consts: [[1, "text-center", "mt-2", "mb-3", "bb"], [1, "text-center"], ["class", "choose row justify-content-around", 4, "ngFor", "ngForOf"], [1, "choose", "row", "justify-content-around"], [1, "col-10", 3, "click"], [1, "delete", "col-2", 3, "click"]],
       template: function MainBandComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "h1", 0);
@@ -1392,7 +1419,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, MainBandComponent_h3_4_Template, 2, 1, "h3", 2);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, MainBandComponent_h3_4_Template, 5, 1, "h3", 2);
         }
 
         if (rf & 2) {
@@ -1406,7 +1433,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       },
       directives: [_angular_common__WEBPACK_IMPORTED_MODULE_3__["NgForOf"]],
-      styles: [".bandName[_ngcontent-%COMP%] {\n  border-bottom: 2px solid black;\n  padding-bottom: 15px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbWFpbi1iYW5kL0U6XFx6ZXNww7PFglxcemJpb3ItcGlvc2VuZWsvc3JjXFxhcHBcXG1haW4tYmFuZFxcbWFpbi1iYW5kLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9tYWluLWJhbmQvbWFpbi1iYW5kLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsOEJBQUE7RUFDQSxvQkFBQTtBQ0NGIiwiZmlsZSI6InNyYy9hcHAvbWFpbi1iYW5kL21haW4tYmFuZC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5iYW5kTmFtZSB7XHJcbiAgYm9yZGVyLWJvdHRvbTogMnB4IHNvbGlkIGJsYWNrO1xyXG4gIHBhZGRpbmctYm90dG9tOiAxNXB4O1xyXG59XHJcbiIsIi5iYW5kTmFtZSB7XG4gIGJvcmRlci1ib3R0b206IDJweCBzb2xpZCBibGFjaztcbiAgcGFkZGluZy1ib3R0b206IDE1cHg7XG59Il19 */"]
+      styles: [".bandName[_ngcontent-%COMP%] {\n  border-bottom: 2px solid black;\n  padding-bottom: 15px;\n}\n\n.delete[_ngcontent-%COMP%] {\n  background: red;\n  font-size: 25px;\n  padding: 5px;\n  border-radius: 10px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbWFpbi1iYW5kL0U6XFx6ZXNww7PFglxcemJpb3ItcGlvc2VuZWsvc3JjXFxhcHBcXG1haW4tYmFuZFxcbWFpbi1iYW5kLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9tYWluLWJhbmQvbWFpbi1iYW5kLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsOEJBQUE7RUFDQSxvQkFBQTtBQ0NGOztBRENBO0VBQ0UsZUFBQTtFQUNBLGVBQUE7RUFFQSxZQUFBO0VBQ0EsbUJBQUE7QUNDRiIsImZpbGUiOiJzcmMvYXBwL21haW4tYmFuZC9tYWluLWJhbmQuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuYmFuZE5hbWUge1xyXG4gIGJvcmRlci1ib3R0b206IDJweCBzb2xpZCBibGFjaztcclxuICBwYWRkaW5nLWJvdHRvbTogMTVweDtcclxufVxyXG4uZGVsZXRlIHtcclxuICBiYWNrZ3JvdW5kOiByZWQ7XHJcbiAgZm9udC1zaXplOiAyNXB4O1xyXG5cclxuICBwYWRkaW5nOiA1cHg7XHJcbiAgYm9yZGVyLXJhZGl1czogMTBweDtcclxufVxyXG4iLCIuYmFuZE5hbWUge1xuICBib3JkZXItYm90dG9tOiAycHggc29saWQgYmxhY2s7XG4gIHBhZGRpbmctYm90dG9tOiAxNXB4O1xufVxuXG4uZGVsZXRlIHtcbiAgYmFja2dyb3VuZDogcmVkO1xuICBmb250LXNpemU6IDI1cHg7XG4gIHBhZGRpbmc6IDVweDtcbiAgYm9yZGVyLXJhZGl1czogMTBweDtcbn0iXX0= */"]
     });
     /*@__PURE__*/
 
@@ -1667,6 +1694,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.toastr = toastr;
         this.location = location;
         this.api = 'https://zbior-piosenek-api.herokuapp.com/api/';
+        this.apiLocalhost = 'http://localhost:8081/api/';
       }
 
       _createClass(MainService, [{
@@ -1749,6 +1777,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             _this10.toastr.success('usunięto piosenkę', 'Udało się!');
 
             _this10.refreshValues().subscribe(function (res) {});
+          });
+        }
+      }, {
+        key: "deletePlaylist",
+        value: function deletePlaylist(id) {
+          var _this11 = this;
+
+          this.http.post(this.api + 'band/delete/playlist', {
+            bandID: this.band._id,
+            playlistID: id
+          }).subscribe(function (res) {
+            _this11.toastr.success('usunięto playlistę', 'Udało się!');
+
+            _this11.refreshValues().subscribe(function (res) {});
           });
         }
       }]);
