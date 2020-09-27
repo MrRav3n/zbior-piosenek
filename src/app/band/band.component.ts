@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MainService } from "../services/main.service";
 
 @Component({
@@ -7,9 +7,17 @@ import { MainService } from "../services/main.service";
   styleUrls: ['./band.component.scss']
 })
 export class BandComponent implements OnInit {
+  @ViewChild('navbarToggler') navbarToggler;
+
+  collapseNavbar() {
+    if(window.innerWidth < 992) {
+      this.navbarToggler.nativeElement.click();
+    }
+  }
 
   constructor(
     public main: MainService
+
   ) { }
 
   ngOnInit() {}

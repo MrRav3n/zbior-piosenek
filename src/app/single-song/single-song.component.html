@@ -3,3 +3,4 @@
 <h4 class="text-left p-2"
     style=" white-space: pre-wrap;" id="text">{{this.main.currentSong.textToSend}}</h4>
 <button *ngIf="this.main.currentPlaylist" (click)="nextSong()" class="btn btn-warning">Następna piosenka</button>
+<button (click)="goBack()" *ngIf="!this.main.currentPlaylist" class="btn btn-warning">Wróć</button>
