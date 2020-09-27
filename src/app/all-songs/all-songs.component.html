@@ -1,2 +1,8 @@
 <h1 class="text-center bb mt-2">Wszystkie piosenki</h1>
-<div *ngFor="let song of this.main.songs" class="choose row justify-content-around" ><div class="col-10" (click)="setCurrentSong(song._id)">{{song.name}}</div> <div class="delete col-2" (click)="delete(song._id)">Usuń</div> </div>
+<form [formGroup]="searchForm" class="row p-0 m-0 justify-content-center">
+    <input type="text" formControlName="search" class="form-control input col-11 col-md-8">
+</form>
+<div *ngFor="let song of songs" class="choose row justify-content-around">
+  <div class="col-9 textWrap" (click)="setCurrentSong(song._id)">{{song.name}}</div>
+  <div class="delete" (click)="delete(song._id)">Usuń</div>
+</div>
