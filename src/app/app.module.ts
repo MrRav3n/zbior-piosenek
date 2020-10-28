@@ -3,20 +3,22 @@ import { NgModule } from '@angular/core';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { WelcomeComponent } from './welcome/welcome.component';
-import { AllSongsComponent } from './all-songs/all-songs.component';
-import { PlaylistComponent } from './playlist/playlist.component';
-import { AddNewComponent } from './add-new/add-new.component';
+import { WelcomeComponent } from './Components/welcome/welcome.component';
+import { AllSongsComponent } from './Components/all-songs/all-songs.component';
+import { PlaylistComponent } from './Components/playlist/playlist.component';
+import { AddNewComponent } from './Components/add-new/add-new.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
-import { MainService } from "./services/main.service";
+import { MainService } from "./Core/services/main-service/main.service";
 import { ReactiveFormsModule } from "@angular/forms";
-import { BandComponent } from './band/band.component';
-import { MainBandComponent } from './main-band/main-band.component';
-import { SingleSongComponent } from './single-song/single-song.component';
-import { HttpErrorInterceptor } from "./interceptor/http-error.interceptor";
+import { BandComponent } from './Components/band/band.component';
+import { MainBandComponent } from './Components/main-band/main-band.component';
+import { SingleSongComponent } from './Components/single-song/single-song.component';
+import { HttpErrorInterceptor } from "./Core/services/interceptor/http-error.interceptor";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { RegisterModalComponent } from './Components/Modals/register-modal/register-modal.component';
+import { SureConfirmationComponent } from './Components/Modals/sure-confirmation/sure-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { environment } from '../environments/environment';
     BandComponent,
     MainBandComponent,
     SingleSongComponent,
+    RegisterModalComponent,
+    SureConfirmationComponent,
   ],
   imports: [
     BrowserModule,

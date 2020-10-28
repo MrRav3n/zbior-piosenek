@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { WelcomeComponent } from "./welcome/welcome.component";
-import { AllSongsComponent } from "./all-songs/all-songs.component";
-import { PlaylistComponent } from "./playlist/playlist.component";
-import { AddNewComponent } from "./add-new/add-new.component";
-import { BandComponent } from "./band/band.component";
-import { MainBandComponent } from "./main-band/main-band.component";
-import { SingleSongComponent } from "./single-song/single-song.component";
+import { WelcomeComponent } from "./Components/welcome/welcome.component";
+import { AllSongsComponent } from "./Components/all-songs/all-songs.component";
+import { PlaylistComponent } from "./Components/playlist/playlist.component";
+import { AddNewComponent } from "./Components/add-new/add-new.component";
+import { BandComponent } from "./Components/band/band.component";
+import { MainBandComponent } from "./Components/main-band/main-band.component";
+import { SingleSongComponent } from "./Components/single-song/single-song.component";
 
 
 const routes: Routes = [

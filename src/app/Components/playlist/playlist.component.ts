@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MainService } from "../services/main.service";
+import { MainService } from "../../Core/services/main-service/main.service";
 import { Router } from "@angular/router";
 
 @Component({
@@ -25,9 +25,6 @@ export class PlaylistComponent implements OnInit {
        this.songs.push(song);
      }
     })
-    // this.songs = this.main.songs.filter((item) => {
-    //   return this.main.currentPlaylist.songs.includes(item._id);
-    // });
   }
 
   setCurrentSong(id, i) {

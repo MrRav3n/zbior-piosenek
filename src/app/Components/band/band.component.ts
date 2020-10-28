@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MainService } from "../services/main.service";
+import { MainService } from "../../Core/services/main-service/main.service";
 
 @Component({
   selector: 'app-band',
@@ -7,6 +7,7 @@ import { MainService } from "../services/main.service";
   styleUrls: ['./band.component.scss']
 })
 export class BandComponent implements OnInit {
+
   @ViewChild('navbarToggler') navbarToggler;
 
   collapseNavbar() {
@@ -15,11 +16,7 @@ export class BandComponent implements OnInit {
     }
   }
 
-  constructor(
-    public main: MainService
-
-  ) { }
+  constructor(public main: MainService) { }
 
   ngOnInit() {}
-
 }

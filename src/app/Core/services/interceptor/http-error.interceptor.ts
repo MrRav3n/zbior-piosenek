@@ -29,7 +29,6 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         catchError((error: HttpErrorResponse) => {
           let errorTitle = '';
           let errorMessage = '';
-
           if (error.error) {
             errorTitle = 'Wystąpił błąd!';
             errorMessage =  error.error.error;

@@ -5,18 +5,21 @@ import { ToastrService } from "ngx-toastr";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { Location } from '@angular/common';
+import { Band } from "../../models/Band";
+import { Song } from "../../models/Song";
+import { Playlist } from "../../models/Playlist";
 @Injectable({
   providedIn: 'root'
 })
 export class MainService {
-
-  band;
-  songs;
-  currentSong;
-  currentPlaylist;
-  bandName;
+  band: Band;
+  songs: [Song];
+  currentSong: Song;
+  currentPlaylist: Playlist;
+  bandName: string;
   api = 'https://zbior-piosenek-api.herokuapp.com/api/';
-  apiLocalhost = 'http://localhost:8081/api/';
+  apiLocalHost = 'http://localhost:8081/api/';
+
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -24,16 +27,21 @@ export class MainService {
     private location: Location,
   ) { }
 
-  login(bandName) {
-    this.http.get<any>(`${this.api}band/allBand?bandName=${bandName}`).subscribe(res => {
-      this.bandName = bandName;
+  login(bandObj) {
+    this.http.post<any>(this.api + 'band/login', bandObj).subscribe(res => {
+      this.bandName = bandObj.name;
       this.band = res.band;
       this.songs = res.songs;
-      console.log(res);
       this.router.navigateByUrl('band')
     })
   }
-
+  register(bandObj) {
+    this.http.post<any>(this.api + 'band/register', bandObj).subscribe(res => {
+      this.bandName = bandObj.name;
+      this.band = res.band;
+      this.router.navigateByUrl('band')
+    })
+  }
   refreshValues(): Observable<any> {
     return this.http.get<any>(`${this.api}band/allBand?bandName=${this.bandName}`).pipe(
       map(res => {
@@ -43,7 +51,7 @@ export class MainService {
   }
 
   setCurrentSong(songID) {
-    this.currentSong = this.songs.filter(v => v._id === songID);
+    this.currentSong = this.songs.filter(v => v._id === songID)[0];
   }
 
   addNewPlaylist(playlist) {
@@ -63,7 +71,6 @@ export class MainService {
       this.refreshValues().subscribe(res => {});
     })
   }
-
   refresh() {
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
       this.router.navigate([this.location.path()]);

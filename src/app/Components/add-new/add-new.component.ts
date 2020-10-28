@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MainService } from "../services/main.service";
+import { MainService } from "../../Core/services/main-service/main.service";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
 
