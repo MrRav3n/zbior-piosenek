@@ -15,7 +15,9 @@ export class BandComponent implements OnInit {
       this.navbarToggler.nativeElement.click();
     }
   }
-
+  logout() {
+    this.main.logout();
+  }
   constructor(public main: MainService) { }
 
   ngOnInit() {}

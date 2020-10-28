@@ -15,7 +15,7 @@
         <a class="nav-link" routerLink="/band/all-songs" [routerLinkActive]="['active']">Wszystkie piosenki</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-danger" routerLink="/band/all-songs" [routerLinkActive]="['active']">Wyloguj się</a>
+        <a class="nav-link text-danger" routerLink="/band/all-songs" (click)="logout()">Wyloguj się</a>
       </li>
     </ul>
   </div>

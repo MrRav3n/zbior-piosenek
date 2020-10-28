@@ -26,7 +26,11 @@ export class MainService {
     private toastr: ToastrService,
     private location: Location,
   ) { }
-
+  logout() {
+    this.band = null;
+    this.songs = null;
+    this.router.navigateByUrl('')
+  }
   login(bandObj) {
     this.http.post<any>(this.api + 'band/login', bandObj).subscribe(res => {
       this.bandName = bandObj.name;

@@ -23,9 +23,9 @@ export class WelcomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loginForm.controls.name.patchValue('Test');
-    this.loginForm.controls.password.patchValue('123');
-    this.login();
+    // this.loginForm.controls.name.patchValue('Test');
+    // this.loginForm.controls.password.patchValue('123');
+    // this.login();
   }
   openRegister() {
     this.sharedService.openRegister();
