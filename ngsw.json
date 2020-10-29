@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1603914002926,
+  "timestamp": 1603975309894,
   "index": "https://mrrav3n.github.io/zbior-piosenek/index.html",
   "assetGroups": [
     {
@@ -10,14 +10,14 @@
       "urls": [
         "https://mrrav3n.github.io/zbior-piosenek/favicon.ico",
         "https://mrrav3n.github.io/zbior-piosenek/index.html",
-        "https://mrrav3n.github.io/zbior-piosenek/main-es2015.8317e2a72b73f0f32385.js",
-        "https://mrrav3n.github.io/zbior-piosenek/main-es5.8317e2a72b73f0f32385.js",
+        "https://mrrav3n.github.io/zbior-piosenek/main-es2015.d988c1bca36c6f89e00d.js",
+        "https://mrrav3n.github.io/zbior-piosenek/main-es5.d988c1bca36c6f89e00d.js",
         "https://mrrav3n.github.io/zbior-piosenek/manifest.webmanifest",
         "https://mrrav3n.github.io/zbior-piosenek/polyfills-es2015.f2c5ab749249a66bdf26.js",
         "https://mrrav3n.github.io/zbior-piosenek/polyfills-es5.049f620af8c864cf4d88.js",
         "https://mrrav3n.github.io/zbior-piosenek/runtime-es2015.1eba213af0b233498d9d.js",
         "https://mrrav3n.github.io/zbior-piosenek/runtime-es5.1eba213af0b233498d9d.js",
-        "https://mrrav3n.github.io/zbior-piosenek/styles.44dc7120de288aeb91ef.css"
+        "https://mrrav3n.github.io/zbior-piosenek/styles.edb9dce840706a17061d.css"
       ],
       "patterns": []
     },
@@ -26,14 +26,9 @@
       "installMode": "lazy",
       "updateMode": "prefetch",
       "urls": [
-        "https://mrrav3n.github.io/zbior-piosenek/assets/icons/icon-128x128.png",
-        "https://mrrav3n.github.io/zbior-piosenek/assets/icons/icon-144x144.png",
-        "https://mrrav3n.github.io/zbior-piosenek/assets/icons/icon-152x152.png",
         "https://mrrav3n.github.io/zbior-piosenek/assets/icons/icon-192x192.png",
-        "https://mrrav3n.github.io/zbior-piosenek/assets/icons/icon-384x384.png",
-        "https://mrrav3n.github.io/zbior-piosenek/assets/icons/icon-512x512.png",
-        "https://mrrav3n.github.io/zbior-piosenek/assets/icons/icon-72x72.png",
-        "https://mrrav3n.github.io/zbior-piosenek/assets/icons/icon-96x96.png"
+        "https://mrrav3n.github.io/zbior-piosenek/assets/img/favicon.ico",
+        "https://mrrav3n.github.io/zbior-piosenek/assets/img/logo.png"
       ],
       "patterns": []
     }
@@ -62,24 +57,19 @@
     }
   ],
   "hashTable": {
-    "https://mrrav3n.github.io/zbior-piosenek/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
-    "https://mrrav3n.github.io/zbior-piosenek/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
-    "https://mrrav3n.github.io/zbior-piosenek/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
-    "https://mrrav3n.github.io/zbior-piosenek/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
-    "https://mrrav3n.github.io/zbior-piosenek/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
-    "https://mrrav3n.github.io/zbior-piosenek/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
-    "https://mrrav3n.github.io/zbior-piosenek/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
-    "https://mrrav3n.github.io/zbior-piosenek/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "https://mrrav3n.github.io/zbior-piosenek/assets/icons/icon-192x192.png": "66271c4e9b3b43d2d83dc481a54c36d9481274a8",
+    "https://mrrav3n.github.io/zbior-piosenek/assets/img/favicon.ico": "684d132b074146c863b4e5dd2e44ad0043b8a9a8",
+    "https://mrrav3n.github.io/zbior-piosenek/assets/img/logo.png": "2ded53037585063b5d8a11139eb7c5908f914b2e",
     "https://mrrav3n.github.io/zbior-piosenek/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "https://mrrav3n.github.io/zbior-piosenek/index.html": "61b205f726a997ea42822ff16ac6185fcc1f82c9",
-    "https://mrrav3n.github.io/zbior-piosenek/main-es2015.8317e2a72b73f0f32385.js": "5a49372622fff2ce9cf0010c9a2d7b10b3565bb4",
-    "https://mrrav3n.github.io/zbior-piosenek/main-es5.8317e2a72b73f0f32385.js": "de544c1e6279ef52ee2845a25764f97b4a66a7d5",
-    "https://mrrav3n.github.io/zbior-piosenek/manifest.webmanifest": "f504be1bf7e81b54f02c9b37f968cf779cc2bb34",
+    "https://mrrav3n.github.io/zbior-piosenek/index.html": "e73222c0f8d38654c54719828d49b1236e074a3b",
+    "https://mrrav3n.github.io/zbior-piosenek/main-es2015.d988c1bca36c6f89e00d.js": "c9017b77874f54597a5421ede82ffae860ef85b6",
+    "https://mrrav3n.github.io/zbior-piosenek/main-es5.d988c1bca36c6f89e00d.js": "bb14091b7b491fce0a19c533dec036f4af467e2c",
+    "https://mrrav3n.github.io/zbior-piosenek/manifest.webmanifest": "829e926fd7f023d0aed0c35b087433ffc121afa6",
     "https://mrrav3n.github.io/zbior-piosenek/polyfills-es2015.f2c5ab749249a66bdf26.js": "72ad4ccc0a3916ae4598199447cdeadd6d380570",
     "https://mrrav3n.github.io/zbior-piosenek/polyfills-es5.049f620af8c864cf4d88.js": "8aa26ea87b9958c6bd13b7c257c0e9940438e684",
     "https://mrrav3n.github.io/zbior-piosenek/runtime-es2015.1eba213af0b233498d9d.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
     "https://mrrav3n.github.io/zbior-piosenek/runtime-es5.1eba213af0b233498d9d.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
-    "https://mrrav3n.github.io/zbior-piosenek/styles.44dc7120de288aeb91ef.css": "cc298375622916f346d198133f6cb91cf32a1b8b"
+    "https://mrrav3n.github.io/zbior-piosenek/styles.edb9dce840706a17061d.css": "2cb22542a0e01f79a3e092529b13d40b48ba60ee"
   },
   "navigationUrls": [
     {
