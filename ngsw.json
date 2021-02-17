@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1605461648745,
+  "timestamp": 1613587712232,
   "index": "https://mrrav3n.github.io/zbior-piosenek/index.html",
   "assetGroups": [
     {
@@ -54,12 +54,12 @@
     {
       "name": "api-freshness",
       "patterns": [
-        "\\/api\\/.*"
+        "https:\\/\\/zbior-piosenek-api\\.herokuapp\\.com\\/api\\/.*"
       ],
       "strategy": "freshness",
-      "maxSize": 100,
+      "maxSize": 20,
       "maxAge": 2592000000,
-      "timeoutMs": 15000,
+      "timeoutMs": 5000,
       "version": 1
     }
   ],
